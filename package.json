@@ -8,6 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.14",
+    "babel-plugin-styled-components": "^1.10.7",
+    "escodegen": "^1.14.2",
+    "esprima": "^4.0.1",
     "next": "9.3.5",
     "react": "16.13.1",
     "react-dom": "16.13.1"
