@@ -4,6 +4,27 @@ orbs:
   node: circleci/node@3.0.0
   aws-ecr: circleci/aws-ecr@6.12.2
 
+jobs:
+  deploy:
+      docker:
+        - image: circleci/buildpack-deps:stretch
+      environment:
+        IMAGE_NAME: 367850933615.dkr.ecr.us-west-2.amazonaws.com/nwpa-website
+      steps:
+        - checkout
+        - run:
+            name: Install envsubst
+            command: |
+              sudo apt-get update && sudo apt-get -y install gettext-base
+        - run:
+            name: Install kubectl
+            command: |
+              curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+              chmod u+x ./kubectl
+        - run:
+            name: Deploy Code
+            command: ./scripts/ci-deploy.sh
+
 workflows:
   build-master:
     jobs:
@@ -13,18 +34,7 @@ workflows:
             - node/test
           repo: nwpa-website
           tag: "latest, $CIRCLE_SHA1"
-      - run:
-          name: Install envsubst
-          command: |
-            sudo apt-get update && sudo apt-get -y install gettext-base
-      - run:
-          name: Install kubectl
-          command: |
-            curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-            chmod u+x ./kubectl
-      - run:
-          name: Deploy Code
-          command: ./scripts/ci-deploy.sh
+      - deploy
     filters:
       branches:
         only: k8s
