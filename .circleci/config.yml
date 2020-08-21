@@ -27,4 +27,4 @@ workflows:
           command: ./scripts/ci-deploy.sh
     filters:
       branches:
-        only: master
+        only: k8s
