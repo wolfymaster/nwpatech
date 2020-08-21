@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   node: circleci/node@3.0.0
   aws-ecr: circleci/aws-ecr@6.12.2
+  aws-cli: circleci/aws-cli@1.2
 
 jobs:
   deploy:
@@ -21,9 +22,8 @@ jobs:
             command: |
               curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
               chmod u+x ./kubectl
-        - run:
-            name: Install AWS CLI v2
-            command: ./scripts/aws-cli.sh
+        - aws-cli/setup:
+            aws-region: AWS_REGION
         - run:
             name: Deploy Code
             command: ./scripts/ci-deploy.sh
