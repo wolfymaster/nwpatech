@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nwpa-website
+  namespace: playground
+  labels:
+    app: nwpa-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nwpa-website
+  template:
+    metadata:
+      labels:
+        app: nwpa-website
+    spec:
+      containers:
+        - name: nwpa-website
+          image: 367850933615.dkr.ecr.us-west-2.amazonaws.com/nwpa-website:$COMMIT_SHA1
+          ports:
+            - containerPort: 3000
+              name: http
