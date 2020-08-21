@@ -25,12 +25,14 @@ echo "$KUBERNETES_CLUSTER_CERTIFICATE" | base64 --decode > cert.crt
   --server=$KUBERNETES_SERVER \
   --certificate-authority=cert.crt \
   --token=$KUBERNETES_TOKEN \
+  --namespace playground
   delete secret --ignore-not-found $SECRET_NAME
 
 ./kubectl --kubeconfig=/dev/null \
   --server=$KUBERNETES_SERVER \
   --certificate-authority=cert.crt \
   --token=$KUBERNETES_TOKEN \
+  --namespace playground
    create secret docker-registry $SECRET_NAME \
  --docker-server="${KUBERNETES_SERVER}" \
  --docker-username=AWS \
