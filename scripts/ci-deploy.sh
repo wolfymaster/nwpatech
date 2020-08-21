@@ -2,6 +2,19 @@
 # exit script when any command ran here returns with non-zero exit code
 set -e
 
+SECRET_NAME=ecr-login-secret
+
+# Fetch token (which will expire in 12 hours)
+TOKEN=`aws ecr --region=$AWS_REGION get-authorization-token --output text --query authorizationData[].authorizationToken | base64 -d | cut -d: -f2`
+
+# Create or replace registry secret
+./kubectl delete secret --ignore-not-found $SECRET_NAME
+./kubectl create secret docker-registry $SECRET_NAME \
+ --docker-server="${KUBERNETES_SERVER}" \
+ --docker-username=AWS \
+ --docker-password="${TOKEN}"
+
+
 COMMIT_SHA1=$CIRCLE_SHA1
 
 # We must export it so it's available for envsubst

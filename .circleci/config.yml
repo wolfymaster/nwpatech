@@ -22,6 +22,9 @@ jobs:
               curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
               chmod u+x ./kubectl
         - run:
+            name: Install AWS CLI v2
+            command: ./scripts/aws-cli.sh
+        - run:
             name: Deploy Code
             command: ./scripts/ci-deploy.sh
 
@@ -33,7 +36,7 @@ workflows:
           requires:
             - node/test
           repo: nwpa-website
-          tag: "latest,$CIRCLE_SHA1"
+          tag: "latest,$CIRCLE_SHA1" # Do not put a space between tags. F's up the deploy
           filters:
             branches:
               only: k8s
