@@ -34,7 +34,7 @@ echo "$KUBERNETES_CLUSTER_CERTIFICATE" | base64 --decode > cert.crt
   --token=$KUBERNETES_TOKEN \
   --namespace playground \
    create secret docker-registry $SECRET_NAME \
- --docker-server="${KUBERNETES_SERVER}" \
+ --docker-server="${AWS_ECR_ACCOUNT_URL}" \
  --docker-username=AWS \
  --docker-password="${TOKEN}"
 
