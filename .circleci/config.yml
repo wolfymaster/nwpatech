@@ -37,6 +37,6 @@ workflows:
           filters:
             branches:
               only: k8s
-      - deploy
+      - deploy:
           requires:
             - aws-ecr/build-and-push-image
