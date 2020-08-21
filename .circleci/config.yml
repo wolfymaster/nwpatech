@@ -32,6 +32,8 @@ workflows:
       - aws-ecr/build-and-push-image:
           requires:
             - node/test
+          environment:
+            CIRCLE_SHA1: plzdeleteme
           repo: nwpa-website
           tag: "latest, $CIRCLE_SHA1"
           filters:
