@@ -8,8 +8,17 @@ SECRET_NAME=ecr-login-secret
 TOKEN=`aws ecr --region=$AWS_REGION get-authorization-token --output text --query authorizationData[].authorizationToken | base64 -d | cut -d: -f2`
 
 # Create or replace registry secret
-./kubectl delete secret --ignore-not-found $SECRET_NAME
-./kubectl create secret docker-registry $SECRET_NAME \
+./kubectl --kubeconfig=/dev/null \
+  --server=$KUBERNETES_SERVER \
+  --certificate-authority=cert.crt \
+  --token=$KUBERNETES_TOKEN \
+  delete secret --ignore-not-found $SECRET_NAME
+
+./kubectl --kubeconfig=/dev/null \
+  --server=$KUBERNETES_SERVER \
+  --certificate-authority=cert.crt \
+  --token=$KUBERNETES_TOKEN \
+   create secret docker-registry $SECRET_NAME \
  --docker-server="${KUBERNETES_SERVER}" \
  --docker-username=AWS \
  --docker-password="${TOKEN}"
