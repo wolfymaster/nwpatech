@@ -34,7 +34,9 @@ workflows:
             - node/test
           repo: nwpa-website
           tag: "latest, $CIRCLE_SHA1"
+          filters:
+            branches:
+              only: k8s
       - deploy
-    filters:
-      branches:
-        only: k8s
+          requires:
+            - aws-ecr/build-and-push-image
