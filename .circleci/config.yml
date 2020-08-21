@@ -8,7 +8,7 @@ workflows:
   build-master:
     jobs:
       - node/test
-      - build-and-push-image:
+      - aws-ecr/build-and-push-image:
           requires:
             - node/test
           repo: nwpa-website
