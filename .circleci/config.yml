@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@3.0.0
-  aws-ecr: circleci/aws-ecr@x.y.z
+  aws-ecr: circleci/aws-ecr@6.12.2
 
 workflows:
   build-master:
