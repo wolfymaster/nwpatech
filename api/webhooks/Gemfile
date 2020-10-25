@@ -1,0 +1,12 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+
+# gem "rails"
+
+gem "octokit", "~> 4.19"
+gem "sequel", "~> 5.37"
+gem "dotenv", "~> 2.7"
+gem "mysql2-lambda", "~> 0.5.3"
