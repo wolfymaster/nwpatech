@@ -35,9 +35,9 @@ const Dashboard = ({session, ...props}) => {
             <Header />
             <SubHeader bgColor="#454851">Dashboard</SubHeader>
             <Container fixed>
-                <Grid container spacing="5">
+                <Grid container spacing={5}>
                     <Grid item xs={4}>
-                        <Card variant="outline" className={classes.card}>
+                        <Card variant="outlined" className={classes.card}>
                             <CardContent className={classes.title}>
                                 Problem Solvings (Basic)
                             </CardContent>
@@ -48,20 +48,57 @@ const Dashboard = ({session, ...props}) => {
                     </Grid>
 
                     <Grid item xs={4}>
-                        <Card variant="outline" className={classes.card}>
+                        <Card variant="outlined" className={classes.card}>
                             <CardContent className={classes.title}>
-                                Rest API (Intermediate)
+                                Resource Library
                             </CardContent>
                             <CardActions>
-                                <Button size="small" variant="outlined">Get Certified</Button>
+                                <Button size="small" variant="outlined" href="/playground/library">Browse Resources</Button>
                             </CardActions>
                         </Card>
                     </Grid>
 
                     <Grid item xs={4}>
-                        <Card variant="outline" className={classes.card}>
+                        <Card variant="outlined" className={classes.card}>
                             <CardContent className={classes.title}>
-                                Angular (White Girl Basic)
+                                Workshops
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small" variant="outlined" href="/playground/workshops">Browse Workshops</Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                </Grid>
+            </Container>
+
+            <Container fixed>
+                <Grid container spacing={5}>
+                    <Grid item xs={4}>
+                        <Card variant="outlined" className={classes.card}>
+                            <CardContent className={classes.title}>
+                                Who's Hiring
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small" variant="outlined">Browse Jobs</Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+
+                    <Grid item xs={4}>
+                        <Card variant="outlined" className={classes.card}>
+                            <CardContent className={classes.title}>
+                                FAQ / Support
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small" variant="outlined">Browse FAQ</Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+
+                    <Grid item xs={4}>
+                        <Card variant="outlined" className={classes.card}>
+                            <CardContent className={classes.title}>
+                                Manage Account
                             </CardContent>
                             <CardActions>
                                 <Button size="small" variant="outlined">Get Certified</Button>
@@ -72,36 +109,14 @@ const Dashboard = ({session, ...props}) => {
             </Container>
 
             <Container fixed>
-                <Grid container spacing="5">
+                <Grid container spacing={5}>
                     <Grid item xs={4}>
-                        <Card variant="outline" className={classes.card}>
+                        <Card variant="outlined" className={classes.card}>
                             <CardContent className={classes.title}>
-                                Manage Account
+                                Find a mentor
                             </CardContent>
                             <CardActions>
-                                <Button size="small" variant="outlined">Get Certified</Button>
-                            </CardActions>
-                        </Card>
-                    </Grid>
-
-                    <Grid item xs={4}>
-                        <Card variant="outline" className={classes.card}>
-                            <CardContent className={classes.title}>
-                                Workshops
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small" variant="outlined">Get Certified</Button>
-                            </CardActions>
-                        </Card>
-                    </Grid>
-
-                    <Grid item xs={4}>
-                        <Card variant="outline" className={classes.card}>
-                            <CardContent className={classes.title}>
-                                Give Up
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small" variant="outlined">Get Certified</Button>
+                                <Button size="small" variant="outlined">Browse Mentors</Button>
                             </CardActions>
                         </Card>
                     </Grid>

@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Layout from '../../components/layout';
 import Header from "../../components/header";
+import Footer from '../../components/footer';
 import {Grid, Container, Button} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {useSession, signout, signin} from "next-auth/client";
@@ -83,6 +84,7 @@ const index = (props) => {
                 </Container>
             </div>
         </Layout>
+        <Footer />
     </>
 
 
