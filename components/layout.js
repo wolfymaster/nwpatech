@@ -1,14 +1,9 @@
 import Head from "next/dist/next-server/lib/head";
+import Footer from './footer';
 
 function Layout(props) {
     return (
         <div className="page-layout">
-            <Head>
-                <title>NWPA Tech</title>
-                <link rel="icon" href="/favicon.ico" />
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-            </Head>
-
             {props.children}
             <style jsx global>{`
         body {

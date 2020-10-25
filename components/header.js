@@ -1,11 +1,12 @@
 import { Container, Grid } from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import Menu from '../components/menu';
+import TopMenu from '../components/menu';
 
 const useStyles = makeStyles(() => ({
     root: {
-        flexGrow: 1,
-        alignItems: 'center',
+        background: '#FFF',
+        borderBottom: '1px solid #d4e1f4',
+        padding: '10px 0',
     }
 }));
 
@@ -14,18 +15,18 @@ function Header(props) {
     const classes = useStyles();
 
     return (
-        <div style={{background: 'white', borderBottom: '1px solid #d4e1f4', padding:'10px'}}>
-            <Container>
-                <Grid container className={classes.root} spacing={2}>
-                    <Grid item lg={5}>
+        <Container component='div' maxWidth={false} disableGutters={true} className={classes.root}>
+            <Container lg={12} component='div'>
+                <Grid container component='div'>
+                    <Grid item lg={5} component='div'>
                         <div>NWPA Tech</div>
                     </Grid>
-                    <Grid item lg={7}>
-                        <Menu/>
+                    <Grid item lg={7} component='div'>
+                        <TopMenu />
                     </Grid>
                 </Grid>
             </Container>
-        </div>
+        </Container>
     )
 }
 
