@@ -18,7 +18,7 @@ db_connection_string ||= "mysql2://%s:%s@%s:%i/%s" % [DB_USER, DB_PASSWORD, DB_H
 DB = Sequel.connect(db_connection_string, max_connections: 10)
 
 def github(event:, context:)
-    client = Octokit::Client.new(:login => 'wolfymaster', :password => 'SnowWolf965312!')
+    client = Octokit::Client.new(:login => ENV['GH_USER'], :password => ENV['GH_PASS'])
     files = client.contents(CHALLENGES_REPO, path: CHALLENGES_REPO_PATH, query: {ref: CHALLENGES_REPO_BRANCH})
 
     challenges = DB.from(:challenges)
